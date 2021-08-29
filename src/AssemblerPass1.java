@@ -29,6 +29,15 @@ public class AssemblerPass1 {
         FileWriter fwLit = new FileWriter("literaltable.txt");
         BufferedWriter bwLit = new BufferedWriter(fwLit);
 
+        // HashMap for Symbol table
+        HashMap<String, SymbolTable> symbTable = new HashMap<>();
+
+        // HashMap for Literal table
+        HashMap<String, LiteralTable> litTable = new HashMap<>();
+
+        // LiteralQueue for storing literals in FIFO
+        List<String> litqueue = new ArrayList<>();
+
         // Hashtable for Imperative Statements
         Hashtable<String, String> IS = new Hashtable<String, String>();
         IS.put("STOP", "00");
@@ -60,5 +69,8 @@ public class AssemblerPass1 {
         bw.close();
         bwSym.close();
         bwLit.close();
+
+        symbTable.clear();
+        litTable.clear();
     }
 }
