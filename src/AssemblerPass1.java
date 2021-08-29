@@ -176,6 +176,18 @@ public class AssemblerPass1 {
 
         }
 
+        for (Map.Entry symElement : symbTable.entrySet()) {
+            String symKey = (String) symElement.getKey();
+            SymbolTable sym1 = symbTable.get(symKey);
+            bwSym.write(sym1.getSymbolNumber() + "\t" + symKey + "\t" + sym1.getSymbolAddress() + "\t"
+                    + sym1.getSymbolLength() + "\r\n");
+        }
+        for (Map.Entry litElement : litTable.entrySet()) {
+            String litKey = (String) litElement.getKey();
+            LiteralTable lit1 = litTable.get(litKey);
+            bwLit.write(lit1.getLiteralNumber() + "\t" + litKey + "\t" + lit1.getLiteralAddress() + "\r\n");
+        }
+
         br.close();
         bw.close();
         bwSym.close();
